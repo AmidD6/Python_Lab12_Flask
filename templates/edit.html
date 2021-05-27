@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Сторінка редагування</title>
+{% endblock %}
+
+{% block body %}
+<h1>Редагування поста</h1>
+    <hr>
+    <h2>Поміняти:</h2>
+    <form action='/info/edit/{{post.id}}' method='POST'>
+        <label for="title">Назва:</label>
+        <input class="form-control" type="text" name='title' id='title' value="{{ post.title }}" aria-label="Enter Title">
+        <br>
+        <label for="author">Автор:</label>
+        <input class="form-control" type="text" name='author' id='author' value="{{ post.author }}" aria-label="Enter Author">
+        <br>
+        <label for="content">Вміст поста:</label>
+        <textarea class="form-control" name='content' id="content" aria-label="Enter Content" rows="3">{{ post.content }}</textarea>
+        <br>
+        <input type='submit' value='Сохранить'>
+    </form>
+    <hr>
+{% endblock %}

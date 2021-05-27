@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Посты</title> 
+{% endblock %}
+
+{% block body %}
+<br>
+<div>
+    <h1 style="display:inline">Піблікації</h1>
+    <a style="display:inline" class="btn btn-success float-right" href="/info/new" >Добавити пост</a>
+</div>
+    <hr>
+
+    {% for post in info %}
+        <h2>{{ post.title }}</h2>
+        {% if post.author %}
+            <small> Добавив {{ post.author }} на {{ post.date_posted }}</small>
+        {% else %}
+            <small> Автор невідомий {{ post.date_posted }}</small>
+        {% endif %}
+        <br>
+        <br>
+        <p style="white-space:pre-wrap">{{ post.content }}</p>
+        <br>
+        <a class="btn btn-danger" href='/info/delete/{{post.id}}'>Видалити</a>
+        <a class="btn btn-primary" href='/info/edit/{{post.id}}'>Редагувати</a>
+        <br>
+        <hr>
+        <br>
+    {% endfor%}
+
+{% endblock %}
